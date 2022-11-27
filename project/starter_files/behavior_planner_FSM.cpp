@@ -43,22 +43,22 @@ State BehaviorPlannerFSM::get_closest_waypoint_goal(
     State waypoint;
     return waypoint;
   }
-  LOG(INFO) << "BP - Num of Lookahead waypoints: " << n_wp;
+  // LOG(INFO) << "BP - Num of Lookahead waypoints: " << n_wp;
 
   waypoint_0 = lookahead_waypoints[lookahead_waypoints.size() - 1];
 
   is_goal_junction = waypoint_0->IsJunction();
-  LOG(INFO) << "BP - Is Last wp in junction? (0/1): " << is_goal_junction;
+  // LOG(INFO) << "BP - Is Last wp in junction? (0/1): " << is_goal_junction;
   auto cur_junction_id = waypoint_0->GetJunctionId();
   if (is_goal_junction) {
     if (cur_junction_id == _prev_junction_id) {
-      LOG(INFO) << "BP - Last wp is in same junction as ego. Junction ID: "
-                << _prev_junction_id;
+      // LOG(INFO) << "BP - Last wp is in same junction as ego. Junction ID: "
+      //           << _prev_junction_id;
       is_goal_junction = false;
     } else {
-      LOG(INFO) << "BP - Last wp is in different junction than ego. Junction
-          ID : "
-                << cur_junction_id;
+      // LOG(INFO) << "BP - Last wp is in different junction than ego. Junction
+      // ID : "
+      //           << cur_junction_id;
       _prev_junction_id = cur_junction_id;
     }
   }
